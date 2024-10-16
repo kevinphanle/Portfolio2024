@@ -2,6 +2,10 @@ export function randomIntFromRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+export function getRandomNumber(minValue, maxValue) {
+  return Math.random() * (maxValue - minValue) + minValue;
+}
+
 export function randomColor(colors) {
   return colors[Math.floor(Math.random() * colors.length)]
 }

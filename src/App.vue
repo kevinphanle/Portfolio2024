@@ -10,10 +10,17 @@ import SidebarComponent from './components/SidebarComponent.vue';
 
 <template>
   <div class="main-wrapper wrapper w-full h-full">
+    <div class="home-page">
+      <Canvas></Canvas>
+      <div class="hero-content">
+        <h3>Hello, I'm <span>Kevin Le</span>.</h3>
+        <h3>I'm a Front End Developer</h3>
 
-    <Canvas></Canvas>
+        <a href="#sidebar" class="hero-cta">View my work</a>
+      </div>
+    </div>
     <div class="main-layout m-auto">
-      <div class="left-sidebar">
+      <div class="left-sidebar" id="sidebar">
         <SidebarComponent />
       </div>
       <div class="right-side grid grid-cols-4">
@@ -42,7 +49,7 @@ import SidebarComponent from './components/SidebarComponent.vue';
   padding-right: 1rem;
   display: flex;
   position: relative;
-  /* background: radial-gradient(ellipse 100% 40% at 50% 60%, rgba(102, 99, 246, 0.07), hsla(0, 0%, 100%, 0)); */
+  background: radial-gradient(ellipse 100% 40% at 50% 60%, rgba(102, 99, 246, 0.07), hsla(0, 0%, 100%, 0));
 }
 
 .right-side {
@@ -64,6 +71,45 @@ import SidebarComponent from './components/SidebarComponent.vue';
     padding: 56px 24px;
     position: relative;
     background: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .05) 100%);
+  }
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hero-content {
+    position: absolute;
+
+
+    h3 {
+      font-size: 2rem;
+      color: white;
+
+      span {
+        color: cyan;
+      }
+    }
+
+    .hero-cta {
+      color: white;
+      background: transparent;
+      border: white solid 2px;
+      width: 200px;
+      padding: 1rem 3rem;
+      margin: 2rem auto;
+      transition: all .5s;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        color: cyan;
+        border: 2px solid cyan;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+      }
+    }
   }
 }
 

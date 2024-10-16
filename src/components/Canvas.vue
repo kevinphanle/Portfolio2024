@@ -8,7 +8,7 @@ const context = ref(null);
 
 const particlesList = ref([]);
 
-const particleCount = 100;
+const particleCount = 300;
 const colors = ["#FFF", "#60ecf1", "#e63946", "#457b9d", "#FCA311"];
 
 const mouse = {
@@ -16,7 +16,7 @@ const mouse = {
   y: window.innerHeight / 2
 };
 
-let mouseDown = false;
+let mouseDown = ref(false);
 
 
 onMounted(() => {
@@ -34,18 +34,25 @@ onMounted(() => {
     mouse.y = event.clientY;
   })
 
+  canvasRef.value.addEventListener('mousedown', (event) => {
+    mouseDown.value = true;
+  })
+
   initParticles();
   render();
 })
 
 
 function initParticles () {
+  particlesList.value = [];
+
   const canvasWidth = canvasRef.value.width
   const canvasHeight = canvasRef.value.height
+
   for (let i = 0; i <= particleCount; i++) {
     // const radius = 2
 
-    const radius = Math.random() * 2
+    const radius = Math.random() + .5;
     const color = utils.randomColor(colors)
     const velocity = Math.random() * .005;
 
@@ -64,27 +71,32 @@ function initParticles () {
 let alpha = .15;
 let radians = 0;
 
+let renderCount = 0;
+var overlayOpacity = 0.2;
+
+function speedUp () {
+  particlesList.value = particlesList.value.map(particle => {
+    return {
+      ...particle,
+      velocity: .5
+    }
+    // particle.velocity = .5;
+  })
+}
+
 
 function render () {
   if (!context.value) {
       return;
   }
 
+  // if(Math.random() >= 0.5){
+    context.value.fillStyle = `rgba(10, 10, 10, 1`;
+    context.value.fillRect(0, 0, canvasRef.value.width, canvasRef.value.height);
+  // }
+
   requestAnimationFrame(render)
 
-  context.value.fillStyle = `rgba(10,10,10, .05)`;
-  context.value.fillRect(0, 0, canvasRef.value.width, canvasRef.value.height);
-
-  // context.value.save()
-  // context.value.translate(canvasRef.value.width / 2, canvasRef.value.height / 2)
-  // context.value.rotate(30)
-  // context.value.restore()
-
-  // radians += 0.003
-
-  context.value.clearRect(0, 0, canvasRef.value.width, canvasRef.value.height);
-
-  // radians += .0001;
 }
 
 </script>
@@ -101,6 +113,7 @@ function render () {
       :context="context" 
       :mouse="mouse" 
       :velocity="particle.velocity"
+      :mouseDown="mouseDown"
       ></Particle>
   </canvas>
 </template>

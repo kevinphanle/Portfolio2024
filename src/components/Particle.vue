@@ -12,9 +12,15 @@ const mouse = props.mouse;
 const velocity = ref(props.velocity);
 const mouseDown = props.mouseDown;
 
+let shadowBlur = 1;
+
+const positions = ref([]);
+let motionLengthTrail = 10;
+
+
 
 const minRadius = .2;
-let opacity = .5;
+let opacity = 1;
 const distanceFromCenter = utils.randomIntFromRange(
   10,
   window.innerWidth / 2 + 200
@@ -29,11 +35,49 @@ let radians = ref(Math.random () * Math.PI * 2);
 
 let updateAnimation;
 
+
+function storeLastPosition (xPos, yPos) {
+  // push item
+  positions.value.push({
+    x: xPos,
+    y: yPos
+  })
+
+  // clear first item
+  if (positions.value.length > motionLengthTrail) {
+    positions.value.shift();
+  }
+}
+
+function hexToRgbA(hex){
+  var c;
+  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+      c= hex.substring(1).split('');
+      if(c.length== 3){
+          c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c= '0x'+c.join('');
+      return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+  }
+  throw new Error('Bad Hex');
+}
+
 function draw(c, lastPoint) {
+
+  for (let i = 0; i < positions.value.length; i++) {
+    const ratio = (i + 1) / positions.value.length
+
+    c.beginPath();
+    c.arc(positions.value[i].x, positions.value[i].y, radius, 0, Math.PI * 2, false);
+    const hexColor = hexToRgbA(color)
+    c.fillStyle = hexColor.replace(',1)', `,${ratio / 4})`)
+    c.fill();
+  }
+
   c.beginPath();
   c.arc(x, y, radius, 0, Math.PI * 2, false);
   c.shadowColor = color;
-  c.shadowBlur = 10;
+  c.shadowBlur = shadowBlur;
   c.fillStyle = color;
   c.fill();
   c.strokeStyle = color;
@@ -44,6 +88,8 @@ function draw(c, lastPoint) {
   c.stroke();
   c.shadowBlur = 0;
   c.closePath();
+
+  storeLastPosition(x, y);
 }
 
 function update (context) {
@@ -59,22 +105,35 @@ function update (context) {
   // move these points over time
   radians.value += velocity.value;
 
+
   // circular motion
-  x =
-    lastMouse.x + Math.cos(radians.value) * distanceFromCenter;
-  y =
-    lastMouse.y + Math.sin(radians.value) * distanceFromCenter;
+  x = lastMouse.x + Math.cos(radians.value) * distanceFromCenter;
+  y = lastMouse.y + Math.sin(radians.value) * distanceFromCenter;
 
   // // mouse collision detection
-  if (utils.distance(mouse.x, mouse.y, x, y) < 150) {
+  if (utils.distance(mouse.x, mouse.y, x, y) < 100) {
+    motionLengthTrail = 30;
 
-    if (radius < 3) {
-      radius += 0.2;
-      opacity += 0.5;
+    if (velocity.value < .009) {
+      velocity.value += .002
     }
-  } else if (radius > minRadius) {
-    radius -= 0.2;
-    opacity -= 0.5;
+
+    if (radius < 1.5) {
+      radius += 0.2;
+      opacity = 1;
+    }
+
+    if (shadowBlur < 5) {
+      shadowBlur += .5;
+    } else {
+      shadowBlur = 1;
+    }
+  } else {
+    radius = 1;
+    opacity = .5;
+    shadowBlur = 1;
+    velocity.value = Math.random() * .005
+    motionLengthTrail = 10;
   }
 
   draw(context, lastPoint);
