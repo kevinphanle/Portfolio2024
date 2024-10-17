@@ -21,13 +21,14 @@ let mouseDown = ref(false);
 
 onMounted(() => {
   context.value = canvasRef.value?.getContext("2d") || undefined;
-  canvasRef.value.width = window.innerWidth;
-  canvasRef.value.height = window.innerHeight;
+  const html = document.querySelector('html');
+
+  canvasRef.value.width = html.clientWidth - 17;
+  canvasRef.value.height = html.clientHeight;
 
   window.addEventListener('resize', (event) => {
-    console.log('resize')
-    canvasRef.value.width = window.innerWidth;
-    canvasRef.value.height = window.innerHeight;
+    canvasRef.value.width = html.clientWidth;
+    canvasRef.value.height = html.clientHeight;
   })
 
   document.addEventListener('mousemove', (event) => {

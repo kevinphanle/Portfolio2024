@@ -12,7 +12,7 @@ import SidebarComponent from './components/SidebarComponent.vue';
 </script>
 
 <template>
-  <div class="main-wrapper wrapper">
+  <div>
     <div class="home-page">
       <Canvas></Canvas>
       <div class="hero-content">
@@ -44,7 +44,6 @@ import SidebarComponent from './components/SidebarComponent.vue';
 
 <style scoped>
 .main-layout {
-  max-width: 1920px;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: center;
