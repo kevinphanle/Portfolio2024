@@ -58,8 +58,8 @@ function initParticles () {
 
     particlesList.value.push(
       {
-        x: canvasWidth / 2,
-        y: canvasHeight / 2 ,
+        x: canvasWidth / 4,
+        y: canvasHeight / 4,
         radius: radius,
         color: color,
         velocity: velocity
@@ -91,9 +91,17 @@ function render () {
   }
 
   // if(Math.random() >= 0.5){
-    context.value.fillStyle = `rgba(10, 10, 10, 1`;
-    context.value.fillRect(0, 0, canvasRef.value.width, canvasRef.value.height);
+    // context.value.fillStyle = `rgba(10, 10, 10, 1)`;
+    // context.value.fillRect(0, 0, canvasRef.value.width, canvasRef.value.height);
   // }
+
+  const grad = context.value.createLinearGradient(0,0, canvasRef.value.width * 2, canvasRef.value.height);
+  grad.addColorStop(0, "black");
+  grad.addColorStop(1, "#2F2F2F");
+
+  // Fill rectangle with gradient
+  context.value.fillStyle = grad;
+  context.value.fillRect(0, 0, canvasRef.value.width, canvasRef.value.height);
 
   requestAnimationFrame(render)
 

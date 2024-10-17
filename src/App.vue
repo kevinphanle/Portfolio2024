@@ -5,6 +5,12 @@ import Projects from './components/Projects.vue';
 import Footer from './components/Footer.vue';
 import Canvas from './components/Canvas.vue';
 
+import SectionComponent from './components/SectionComponent.vue';
+
+import section_mapping from './components/section_mapping'
+
+console.log(section_mapping)
+
 import SidebarComponent from './components/SidebarComponent.vue';
 </script>
 
@@ -24,15 +30,18 @@ import SidebarComponent from './components/SidebarComponent.vue';
         <SidebarComponent />
       </div>
       <div class="right-side grid grid-cols-4">
+        <!-- <SectionComponent title="About Me"/>
         <AboutMe />
         <Experience />
-        <Experience />
-        <Experience />
-        <Projects />
+        <Projects /> -->
+
+        <template v-for="section in section_mapping">
+          <SectionComponent :title="section.title" :content="section.content"/>
+        </template>
       </div>
       
-      <Footer />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -42,18 +51,14 @@ import SidebarComponent from './components/SidebarComponent.vue';
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: center;
-  align-items: stretch;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 2rem;
   display: flex;
   position: relative;
-  background: radial-gradient(ellipse 100% 40% at 50% 60%, rgba(102, 99, 246, 0.07), hsla(0, 0%, 100%, 0));
+  /* background: radial-gradient(ellipse 100% 40% at 50% 60%, rgba(102, 99, 246, 0.07), hsla(0, 0%, 100%, 0)); */
 }
 
 .right-side {
-  --gap: 24px;
+  --gap: 2rem;
   width: 100%;
   margin: 0px auto;
   display: grid;
@@ -65,12 +70,13 @@ import SidebarComponent from './components/SidebarComponent.vue';
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     overflow: hidden;
-    min-height: 480px;
-    padding: 56px 24px;
+    /* min-height: 480px; */
+    /* padding: 56px 24px; */
     position: relative;
-    background: radial-gradient(rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .05) 100%);
+    background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%);
+
   }
 }
 

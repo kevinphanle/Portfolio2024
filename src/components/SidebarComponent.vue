@@ -22,15 +22,15 @@ const navigationItems = [
 <template>
   <div class="sidebar flex justify-center items-center flex-col gap-3 rounded-lg p-8">
       <img src="/headshot.jpg" class="w-24 rounded-md"/>
-      <h1 class="text-3xl mb-8">Kevin Le</h1>
+      <h1 class="text-xl">Kevin Le</h1>
       <!-- <h2 class="text-xl">Front End Developer at Zendesk Professional Services</h2> -->
       <!-- <p class="text-base">I build pixel-perfect, engaging, and accessible digital experiences.</p> -->
 
-      <ul class="navigation flex flex-col gap-y-8">
+      <!-- <ul class="navigation flex flex-col gap-y-8">
         <li v-for="(item, index) in navigationItems" :key="index">
           {{ item.label }}
         </li>
-      </ul>
+      </ul> -->
     </div>
 </template>
 

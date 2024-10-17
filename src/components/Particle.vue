@@ -15,7 +15,7 @@ const mouseDown = props.mouseDown;
 let shadowBlur = 1;
 
 const positions = ref([]);
-let motionLengthTrail = 10;
+let motionLengthTrail = 100;
 
 
 
@@ -23,7 +23,7 @@ const minRadius = .2;
 let opacity = 1;
 const distanceFromCenter = utils.randomIntFromRange(
   10,
-  window.innerWidth / 2 + 200
+  window.innerWidth
 );
 
 const lastMouse = {
@@ -132,7 +132,7 @@ function update (context) {
     radius = 1;
     opacity = .5;
     shadowBlur = 1;
-    velocity.value = Math.random() * .005
+    velocity.value = Math.random() * .009 + .005
     motionLengthTrail = 10;
   }
 
