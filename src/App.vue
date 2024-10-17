@@ -6,16 +6,13 @@ import Footer from './components/Footer.vue';
 import Canvas from './components/Canvas.vue';
 
 import SectionComponent from './components/SectionComponent.vue';
-
 import section_mapping from './components/section_mapping'
-
-console.log(section_mapping)
 
 import SidebarComponent from './components/SidebarComponent.vue';
 </script>
 
 <template>
-  <div class="main-wrapper wrapper w-full h-full">
+  <div class="main-wrapper wrapper">
     <div class="home-page">
       <Canvas></Canvas>
       <div class="hero-content">
@@ -25,7 +22,7 @@ import SidebarComponent from './components/SidebarComponent.vue';
         <a href="#sidebar" class="hero-cta">View my work</a>
       </div>
     </div>
-    <div class="main-layout m-auto">
+    <div class="main-layout">
       <div class="left-sidebar" id="sidebar">
         <SidebarComponent />
       </div>

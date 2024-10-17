@@ -24,7 +24,8 @@ onMounted(() => {
   canvasRef.value.width = window.innerWidth;
   canvasRef.value.height = window.innerHeight;
 
-  document.addEventListener('resize', (event) => {
+  window.addEventListener('resize', (event) => {
+    console.log('resize')
     canvasRef.value.width = window.innerWidth;
     canvasRef.value.height = window.innerHeight;
   })

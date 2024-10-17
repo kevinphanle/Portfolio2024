@@ -1,9 +1,14 @@
 <script setup>
-
+import SocialIcon from './SocialIcon.vue';
+const socialIcons = [
+  {
+    icon: 'icon'
+  }
+]
 </script>
 
 <template>
-  <footer>Footer</footer>
+  Hello
 </template>
 
 <style scoped>
