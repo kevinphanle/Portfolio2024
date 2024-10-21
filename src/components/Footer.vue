@@ -1,8 +1,13 @@
 <script setup>
 import SocialIcon from './SocialIcon.vue';
+import IconLinkedin from './icons/IconLinkedin.vue';
+import IconGithub from './icons/IconGithub.vue';
 const socialIcons = [
   {
-    icon: 'icon'
+    icon: IconLinkedin
+  },
+  {
+    icon: IconGithub
   }
 ]
 </script>
@@ -14,7 +19,7 @@ const socialIcons = [
     </a> -->
 
     <div className="footer-content">
-      <div className="">
+      <div className="left">
         <h3>Reach me at: </h3>
 
         <div className="contact">
@@ -32,7 +37,8 @@ const socialIcons = [
           Kevin Lê <span>©2020</span>
         </p>
       </div>
-      <div className="">
+
+      <div className="right">
         <ul className="social-icons">
           <template v-for="icon in socialIcons">
             <SocialIcon :icon="icon.icon"></SocialIcon>
@@ -47,7 +53,7 @@ const socialIcons = [
 
 .footer {
   width: 100%;
-  background: white;
+  background: #ddd;
 
   padding: 4rem 0;
   position: relative;
@@ -121,10 +127,12 @@ const socialIcons = [
       text-align: right;
       display: flex;
       align-items: center;
+
       .social-icons {
         display: flex;
         justify-content: space-between;
         list-style: none;
+
         li {
           margin: 0 15px;
 
@@ -133,32 +141,21 @@ const socialIcons = [
             /* background: lighten($darkgray, $amount: 10%); */
 
             text-decoration: none;
-            width: 60px;
-            height: 60px;
+            width: 30px;
+            height: 30px;
             font-size: 2rem;
 
             &:hover {
               transition: all 0.4s;
               /* background: $highlight; */
+              cursor: pointer;
+
               transform: scale(0.9);
             }
 
-            .flex-icon {
-              width: 100%;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
 
-              span {
-                color: white;
-                animation-duration: 0.4s;
-              }
-            }
 
-            &:hover {
-              cursor: pointer;
-            }
+            
           }
         }
       }

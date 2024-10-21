@@ -9,12 +9,16 @@ const props = defineProps(['icon'])
       target="_blank"
       rel="noopener noreferrer"
       >
-      <span>{{ props.icon }}</span>
+      <component :is="icon"></component>
     </a>
   </li>
 </template>
 
 <style scoped>
 
+a {
+  display: inline-block;
+  width: 30px;
+}
 
 </style>
