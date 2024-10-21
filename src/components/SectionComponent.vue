@@ -13,11 +13,11 @@ function toggleSection () {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 section-comp p-8 rounded-lg" @click="toggleSection">
+  <section class="flex flex-col gap-4 section-comp p-8 rounded-lg cursor-pointer" @click="toggleSection">
     {{props.title}}
 
     <div v-if="showSection">
-      <p>{{props.content}}</p>
+      <div v-html="props.content"></div>
     </div>
   </section>
 
@@ -32,6 +32,12 @@ function toggleSection () {
   
   p {
     color: white;
+  }
+
+  &:hover {
+    background: cyan;
+    color: black;
+    transition: all .2s;
   }
 }
 

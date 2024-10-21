@@ -15,28 +15,31 @@ import SidebarComponent from './components/SidebarComponent.vue';
   <div>
     <div class="home-page">
       <Canvas></Canvas>
-      <div class="hero-content">
-        <h3>Hello, I'm <span>Kevin Le</span>.</h3>
-        <h3>I'm a Front End Developer</h3>
-
-        <a href="#sidebar" class="hero-cta">View my work</a>
+      <div class="main-layout">
+        <div class="hero-content">
+          <h3>Hello, I'm <span>Kevin Le</span>.</h3>
+          <h3>I'm a Front End Developer</h3>
+  
+          <!-- <a href="#sidebar" class="hero-cta">View my work</a> -->
+  
+        </div>
+        <div class="hero-main flex ">
+          <div class="left-sidebar" id="sidebar">
+            <SidebarComponent />
+          </div>
+          <div class="right-side grid grid-cols-3">
+            <!-- <SectionComponent title="About Me"/>
+            <AboutMe />
+            <Experience />
+            <Projects /> -->
+    
+            <template v-for="section in section_mapping">
+              <SectionComponent :title="section.title" :content="section.content"/>
+            </template>
+          </div>
+        </div>
+        
       </div>
-    </div>
-    <div class="main-layout">
-      <div class="left-sidebar" id="sidebar">
-        <SidebarComponent />
-      </div>
-      <div class="right-side grid grid-cols-4">
-        <!-- <SectionComponent title="About Me"/>
-        <AboutMe />
-        <Experience />
-        <Projects /> -->
-
-        <template v-for="section in section_mapping">
-          <SectionComponent :title="section.title" :content="section.content"/>
-        </template>
-      </div>
-      
     </div>
     <Footer />
   </div>
@@ -47,9 +50,11 @@ import SidebarComponent from './components/SidebarComponent.vue';
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: center;
-  padding: 2rem;
-  display: flex;
-  position: relative;
+  padding: 2rem 0;
+  /* display: flex; */
+  position: absolute;
+  width: 1000px;
+  margin: 0 auto;
   /* background: radial-gradient(ellipse 100% 40% at 50% 60%, rgba(102, 99, 246, 0.07), hsla(0, 0%, 100%, 0)); */
 }
 
@@ -76,13 +81,19 @@ import SidebarComponent from './components/SidebarComponent.vue';
   }
 }
 
+.hero-main {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+
 .home-page {
   display: flex;
   justify-content: center;
   align-items: center;
 
   .hero-content {
-    position: absolute;
+    /* position: absolute; */
+    margin-bottom: 2rem;
 
 
     h3 {

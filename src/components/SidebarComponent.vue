@@ -42,7 +42,7 @@ const navigationItems = [
   /* background: #111; */
   background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%);
   color: white;
-
+  min-width: 300px;
 }
 
 

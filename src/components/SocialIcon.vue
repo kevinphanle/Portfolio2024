@@ -5,11 +5,11 @@ const props = defineProps(['icon'])
 <template>
   <li>
     <a 
-      href="#"
+      :href="icon.url"
       target="_blank"
       rel="noopener noreferrer"
       >
-      <component :is="icon"></component>
+      <component :is="icon.icon"></component>
     </a>
   </li>
 </template>
@@ -18,7 +18,24 @@ const props = defineProps(['icon'])
 
 a {
   display: inline-block;
+  /* background: lighten($darkgray, $amount: 10%); */
+
+  text-decoration: none;
   width: 30px;
+  height: 30px;
+  font-size: 2rem;
+
+  &:hover {
+    transition: all 0.4s;
+    /* background: $highlight; */
+    cursor: pointer;
+
+    transform: scale(1.7);
+  }
+
+
+
+  
 }
 
 </style>

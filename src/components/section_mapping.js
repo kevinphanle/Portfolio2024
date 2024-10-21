@@ -1,7 +1,7 @@
 export default [
   {
     title: 'About Me',
-    content: 'This is about me'
+    content: 'I have transitioned careers back in 2020 and have since been honing my skills and passion in development at Zendesk. \n\n Outside of development, I enjoy staying active by backpacking and playing grass volleyball.'
   },
 
   {
@@ -9,7 +9,7 @@ export default [
     content: "This is my experience",
   },
   {
-    title: 'Projects',
-    content: 'These are my projects'
+    title: 'Skills',
+    content: 'These are my skills'
   }
 ]

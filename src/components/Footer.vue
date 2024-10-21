@@ -4,10 +4,12 @@ import IconLinkedin from './icons/IconLinkedin.vue';
 import IconGithub from './icons/IconGithub.vue';
 const socialIcons = [
   {
-    icon: IconLinkedin
+    icon: IconLinkedin,
+    url: 'https://www.linkedin.com/in/kevinphanle/'
   },
   {
-    icon: IconGithub
+    icon: IconGithub,
+    url: 'https://github.com'
   }
 ]
 </script>
@@ -34,14 +36,14 @@ const socialIcons = [
           <p>(408) 705 3276</p>
         </div>
         <p className="copyright">
-          Kevin Lê <span>©2020</span>
+          Kevin Lê <span>©2024</span>
         </p>
       </div>
 
       <div className="right">
         <ul className="social-icons">
           <template v-for="icon in socialIcons">
-            <SocialIcon :icon="icon.icon"></SocialIcon>
+            <SocialIcon :icon="icon"></SocialIcon>
           </template>
         </ul>
       </div>
@@ -53,7 +55,7 @@ const socialIcons = [
 
 .footer {
   width: 100%;
-  background: #ddd;
+  background: #0c0c0c;
 
   padding: 4rem 0;
   position: relative;
@@ -84,9 +86,11 @@ const socialIcons = [
 
   .footer-content {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    gap: 2rem;
     margin: 0 auto;
-    width: 80%;
+    /* width: 80%; */
+    width: 1000px;
 
     .left {
 
@@ -117,8 +121,10 @@ const socialIcons = [
         font-weight: 100;
         font-size: 0.7rem;
         text-transform: uppercase;
-        span {
+        color: cyan;
 
+        span {
+          color: white;
         }
       }
     }
@@ -136,27 +142,7 @@ const socialIcons = [
         li {
           margin: 0 15px;
 
-          a {
-            display: inline-block;
-            /* background: lighten($darkgray, $amount: 10%); */
-
-            text-decoration: none;
-            width: 30px;
-            height: 30px;
-            font-size: 2rem;
-
-            &:hover {
-              transition: all 0.4s;
-              /* background: $highlight; */
-              cursor: pointer;
-
-              transform: scale(0.9);
-            }
-
-
-
-            
-          }
+          
         }
       }
     }
