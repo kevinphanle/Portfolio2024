@@ -11,11 +11,11 @@ function toggleAboutMe () {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 about-me p-8 rounded-lg" @click="toggleAboutMe">
+  <section class="flex flex-col gap-4 about-me p-8 rounded-lg cursor-pointer" @click="toggleAboutMe">
     About
 
     <div v-if="showSection">
-      <p>I transitioned to careers</p>
+      <p>I have transitioned careers back in 2020 and have since been honing my skills and passion in development at Zendesk. <br><br> Outside of development, I enjoy staying active by backpacking and playing grass volleyball.</p>
     </div>
   </section>
 
@@ -29,7 +29,13 @@ function toggleAboutMe () {
   grid-column: auto;
   
   p {
-    color: white;
+    color: rgb(0, 70, 70);
+  }
+
+  &:hover {
+    background: cyan;
+    color: black;
+    transition: all .2s;
   }
 }
 

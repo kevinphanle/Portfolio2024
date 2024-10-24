@@ -132,7 +132,7 @@ function update (context) {
     radius = 1;
     opacity = .5;
     shadowBlur = 1;
-    velocity.value = Math.random() * .009 + .005
+    velocity.value = Math.random() * .009 + .003
     motionLengthTrail = 10;
   }
 

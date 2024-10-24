@@ -28,14 +28,14 @@ import SidebarComponent from './components/SidebarComponent.vue';
             <SidebarComponent />
           </div>
           <div class="right-side grid grid-cols-3">
-            <!-- <SectionComponent title="About Me"/>
+            <!-- <SectionComponent title="About Me"/> -->
             <AboutMe />
             <Experience />
-            <Projects /> -->
+            <Projects />
     
-            <template v-for="section in section_mapping">
+            <!-- <template v-for="section in section_mapping">
               <SectionComponent :title="section.title" :content="section.content"/>
-            </template>
+            </template> -->
           </div>
         </div>
         
