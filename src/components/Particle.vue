@@ -64,6 +64,7 @@ function hexToRgbA(hex){
 
 function draw(c, lastPoint) {
 
+  // draw trail effect
   for (let i = 0; i < positions.value.length; i++) {
     const ratio = (i + 1) / positions.value.length
 

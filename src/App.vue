@@ -1,7 +1,7 @@
 <script setup>
 import AboutMe from './components/AboutMe.vue';
 import Experience from './components/Experience.vue';
-import Projects from './components/Projects.vue';
+import Projects from './components/Skills.vue';
 import Footer from './components/Footer.vue';
 import Canvas from './components/Canvas.vue';
 

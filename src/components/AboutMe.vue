@@ -11,11 +11,13 @@ function toggleAboutMe () {
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 about-me p-8 rounded-lg cursor-pointer" @click="toggleAboutMe">
-    About
+  <section class="flex flex-col gap-4 component about-me p-8 rounded-lg cursor-pointer" @click="toggleAboutMe">
+    <h3>About</h3>
 
     <div v-if="showSection">
-      <p>I have transitioned careers back in 2020 and have since been honing my skills and passion in development at Zendesk. <br><br> Outside of development, I enjoy staying active by backpacking and playing grass volleyball.</p>
+      <p>
+        I have transitioned careers back in 2020 and have since been honing my skills and passion in development as a <span>Frontend Developer</span> at Zendesk. <br><br> Outside of development, I enjoy staying active by backpacking at parks in California and playing grass volleyball.
+      </p>
     </div>
   </section>
 
@@ -24,18 +26,13 @@ function toggleAboutMe () {
 
 <style scoped>
 
-.about-me {
-  background: #111;
-  grid-column: auto;
-  
-  p {
-    color: rgb(0, 70, 70);
-  }
+h3 {
+  font-size: 1.5rem;
+}
 
-  &:hover {
-    background: cyan;
-    color: black;
-    transition: all .2s;
+p {
+  span {
+    color: white;
   }
 }
 
